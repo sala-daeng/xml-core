@@ -295,7 +295,9 @@ export class XmlObject implements IXmlSerializable {
 
         // Cache compiled elements
         this.element = el;
+        console.log('xxxxxxxxxxx')
         console.log('el', el)
+        console.log('doc', doc)
         return el;
     }
 
