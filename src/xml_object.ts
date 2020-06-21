@@ -81,8 +81,7 @@ export class XmlObject implements IXmlSerializable {
         // if (namespaceUri2 == ' xmlns:xades="http://uri.etsi.org/01903/v1.3.2#"') {
         if (true) {
             console.log('#####CCCCXXXX', namespaceUri2)
-            // const doc = new DOMParser().parseFromString(`<${name}${namespaceUri2} xmlns:xades141="http://uri.etsi.org/01903/v1.4.1#"></${name}>`, APPLICATION_XML);
-            const doc = new DOMParser().parseFromString(`<${name} xmlns:xades141="http://uri.etsi.org/01903/v1.4.1#"></${name}>`, APPLICATION_XML);
+            const doc = new DOMParser().parseFromString(`<${name}${namespaceUri2} xmlns:xades141="http://uri.etsi.org/01903/v1.4.1#"></${name}>`, APPLICATION_XML);
             return doc;
         }
         // END HACK
