@@ -532,7 +532,7 @@ export class XmlObject implements IXmlSerializable {
             console.log('#HHHHHHHHHHHHHHHH####')
             //const props = xn.getElementsByTagName("xades:QualifyingProperties");
             // xn.setAttribute("xmlns:xades141","http://uri.etsi.org/01903/v1.4.1#");
-            xn.setAttributeNS(this.NamespaceURI, "xmlns:xades141", "http://uri.etsi.org/01903/v1.4.1#");
+            xn.setAttributeNS(null, "xmlns:xades141", "http://uri.etsi.org/01903/v1.4.1#");
             console.log('xn', xn)
         }
 
