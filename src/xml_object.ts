@@ -77,17 +77,17 @@ export class XmlObject implements IXmlSerializable {
         }
         const name = `${namePrefix}${root}`;
 
-        // // BEGIN HACK for xadesjs
-        // // if (namespaceUri2 == ' xmlns:xades="http://uri.etsi.org/01903/v1.3.2#"') {
-        // if (true) {
-        //     console.log('#####CCCCXXXX', namespaceUri2)
-        //     const doc = new DOMParser().parseFromString(`<${name}${namespaceUri2} xmlns:xades141="http://uri.etsi.org/01903/v1.4.1#"></${name}>`, APPLICATION_XML);
-        //     return doc;
-        // }
-        // // END HACK
+        // BEGIN HACK for xadesjs
+        // if (namespaceUri2 == ' xmlns:xades="http://uri.etsi.org/01903/v1.3.2#"') {
+        if (true) {
+            console.log('#####CCCCXXXX', namespaceUri2)
+            const doc = new DOMParser().parseFromString(`<${name}${namespaceUri2} xmlns:xades141="http://uri.etsi.org/01903/v1.4.1#"></${name}>`, APPLICATION_XML);
+            return doc;
+        }
+        // END HACK
 
-        const doc = new DOMParser().parseFromString(`<${name}${namespaceUri2}></${name}>`, APPLICATION_XML);
-        return doc;
+        // const doc = new DOMParser().parseFromString(`<${name}${namespaceUri2}></${name}>`, APPLICATION_XML);
+        // return doc;
     }
 
     public static GetChildren(node: Node, localName: string, nameSpace?: string): Element[] {
@@ -545,8 +545,16 @@ export class XmlObject implements IXmlSerializable {
         const xx = (prefix ? `${prefix}:` : "") + localName
         console.log('########### createElementNS', xx)
         console.log('this.NamespaceURI', this.NamespaceURI)
-        const xn = document!.createElementNS(this.NamespaceURI, xx);
+        
+        let xn = document!.createElementNS(this.NamespaceURI, xx);        
+        if (xx == 'xades:QualifyingProperties') {
+            console.log('#HHHHHHHHHHHHHHHH####')
+            //const props = xn.getElementsByTagName("xades:QualifyingProperties");
+            xn.setAttribute("xmlns:xades141","http://uri.etsi.org/01903/v1.4.1#"); 
+        }
+
         document!.importNode(xn, true);
+
         //
 
         return xn;
