@@ -519,25 +519,25 @@ export class XmlObject implements IXmlSerializable {
         namespaceUri = namespaceUri || this.NamespaceURI;
         prefix = prefix || this.prefix;
 
-        // const xn = document!.createElementNS(this.NamespaceURI, (prefix ? `${prefix}:` : "") + localName);
-        // document!.importNode(xn, true);
-
-        // HACK
-        const xx = (prefix ? `${prefix}:` : "") + localName
-        console.log('########### createElementNS', xx)
-        console.log('this.NamespaceURI', this.NamespaceURI)
-        
-        let xn = document!.createElementNS(this.NamespaceURI, xx);        
-        if (xx == 'xades:QualifyingProperties') {
-            console.log('#HHHHHHHHHHHHHHHH####')
-            //const props = xn.getElementsByTagName("xades:QualifyingProperties");
-            //xn.setAttribute("xmlns:xades141","http://uri.etsi.org/01903/v1.4.1#");
-            xn.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xades141", "http://uri.etsi.org/01903/v1.4.1#");
-            console.log('xn.attributes', xn.attributes)
-        }
-
+        const xn = document!.createElementNS(this.NamespaceURI, (prefix ? `${prefix}:` : "") + localName);
         document!.importNode(xn, true);
-        //
+
+        // // HACK
+        // const xx = (prefix ? `${prefix}:` : "") + localName
+        // console.log('########### createElementNS', xx)
+        // console.log('this.NamespaceURI', this.NamespaceURI)
+        
+        // let xn = document!.createElementNS(this.NamespaceURI, xx);        
+        // if (xx == 'xades:QualifyingProperties') {
+        //     console.log('#HHHHHHHHHHHHHHHH####')
+        //     //const props = xn.getElementsByTagName("xades:QualifyingProperties");
+        //     //xn.setAttribute("xmlns:xades141","http://uri.etsi.org/01903/v1.4.1#");
+        //     xn.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xades141", "http://uri.etsi.org/01903/v1.4.1#");
+        //     console.log('xn.attributes', xn.attributes)
+        // }
+
+        // document!.importNode(xn, true);
+        // //
 
         return xn;
     }
