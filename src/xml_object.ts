@@ -187,6 +187,8 @@ export class XmlObject implements IXmlSerializable {
 
     public GetXml(hard?: boolean): Element | null {
         if (!(hard || this.HasChanged())) {
+            console.log('xxxxxxxxxxx0')
+            console.log('el', this.element)
             return this.element || null;
         }
 
